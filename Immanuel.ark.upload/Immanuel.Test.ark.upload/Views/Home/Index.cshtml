@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+@(await Html.RenderComponentAsync<ark.blazor.upload.Component1>(RenderMode.ServerPrerendered, new { Message = "Lord Jesus my Master" }))
+@(await Html.RenderComponentAsync<ark.blazor.upload.Upload>(RenderMode.ServerPrerendered, new { Message = "Lord Jesus my Master" }))

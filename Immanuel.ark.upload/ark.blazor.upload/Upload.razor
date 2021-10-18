@@ -1,0 +1,69 @@
+﻿@inject IJSRuntime JS
+<div class="upload">
+    <div class="upload-files">
+        <header>
+            <p>
+                <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                <span class="up">up</span>
+                <span class="load">load</span>
+            </p>
+        </header>
+        <div class="body" id="drop">
+            <i class="fa fa-file-text-o pointer-none" aria-hidden="true"></i>
+            <p class="pointer-none"><b>Drag and drop</b> files here <br /> or <a href="" id="triggerFile">browse</a> to begin the upload</p>
+            <input type="file" multiple="multiple" />
+            @*<InputFile @ref="reff"></InputFile>*@
+        </div>
+        <footer>
+            <div class="divider">
+                <span>FILES</span>
+            </div>
+            <div class="list-files">
+                <!--   template   -->
+            </div>
+            <button class="importar">UPDATE FILES</button>
+        </footer>
+    </div>
+</div>
+
+@code{
+    [Parameter]
+    public string Message { get; set; }
+    InputFile reff;
+    private UploadFile jsClass;
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+
+        }
+        base.OnAfterRender(firstRender);
+    }
+    protected override async void OnInitialized()
+    {
+        jsClass = new(JS);
+        //jsClass.LoadTaskk();
+        //jsClass.Init();
+    }
+    private async Task TriggerInput(MouseEventArgs args)
+    {
+        await jsClass.TriggerInput(reff, args);
+    }
+    private async Task HandleFile(InputFileChangeEventArgs o)
+    {
+
+        HttpClient httpClient = new HttpClient();
+        //HttpResponseMessage response = await httpClient.PostAsync("http://....", new StreamContent(streamToSend));
+        //var content = new MultipartFormDataContent();
+
+        //content.Add(new StreamContent(stream1), "file1.jpg");
+        //content.Add(new StreamContent(stream2), "file2.jpg");
+        //HttpResponseMessage response = await httpClient.PostAsync("http://...", content);
+        //await jsClass.HandleFileSelect(o);
+    }
+    private async Task PromptTest()
+    {
+        await jsClass.Prompt(Message);
+    }
+
+}

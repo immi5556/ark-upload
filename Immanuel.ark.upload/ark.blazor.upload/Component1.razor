@@ -1,0 +1,8 @@
+﻿<div class="my-component">
+    This Blazor component is defined in the <strong>ark.blazor.upload</strong> package.
+    <button onclick="showPrompt('')">@Message</button>
+</div>
+@code { 
+    [Parameter]
+    public string Message { get; set; }
+}
